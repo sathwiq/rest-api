@@ -1,0 +1,20 @@
+@import '~material-bottom-nav';
+.uploader-status ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #000000;
+    
+}
+.ng-star-inserted{
+    margin-bottom: 10px
+}
+.border{
+    border:1px solid rgb(190, 96, 96);
+}
+a{
+    cursor: pointer;
+}
+button{
+    outline: none;
+} 
+.bottom-nav {
+    @include bottom-nav($background-color: #009688, $active-color: #FFFFFF, $inactive-color: #E0E0E0, $hide-inactive-labels: true);
+  }

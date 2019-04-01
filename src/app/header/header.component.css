@@ -1,0 +1,43 @@
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+
+}
+.toolColor{
+
+  padding-left: 200px;
+  padding-right:200px;
+
+  color: aliceblue
+}
+span{
+
+  padding: 20px;
+}
+a{
+  text-decoration: none;
+  color: aliceblue;
+}
+.active{
+  background-color:#8a83eb;
+  padding: 17px
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+ul {
+  display: flex;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

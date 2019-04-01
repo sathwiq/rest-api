@@ -1,0 +1,16 @@
+<h5>Exclusive Deals</h5>
+<app-sliding-menu></app-sliding-menu>
+<h4>Menu Items</h4>
+<mat-accordion> 
+    <mat-expansion-panel *ngFor="let i of sponsor,let id=index" (click)="loadItems(i.title)" (opened)="openGroup(id)">
+      <mat-expansion-panel-header  >
+        <mat-panel-title >
+          {{i.title}}
+        </mat-panel-title>
+        <mat-panel-description>
+          catagories
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <router-outlet *ngIf="isOpen==id"></router-outlet>     
+    </mat-expansion-panel>
+</mat-accordion>

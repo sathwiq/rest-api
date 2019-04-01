@@ -1,0 +1,9 @@
+table {
+  width: 100%;
+}
+.mat-column-select {
+  overflow: initial;
+}
+.s{
+  transform: translateX(20%)
+}
