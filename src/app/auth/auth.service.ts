@@ -26,7 +26,7 @@ export class AuthService {
 
   createUser(email: string, password: string) {
     const authData: AuthData = {email, password};
-    this.http.post('http://localhost:3000/user/signup', authData)
+    this.http.post('https://psat.herokuapp.com/user/signup', authData)
       .subscribe(response => {
         console.log(response);
       });
@@ -34,7 +34,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     const authData: AuthData = {email, password};
-    this.http.post<{token: string, epiresIn: number}>('http://localhost:3000/user/login', authData)
+    this.http.post<{token: string, epiresIn: number}>('https://psat.herokuapp.com/user/login', authData)
       .subscribe(response => {
         const token = response.token;
         this.token = token;

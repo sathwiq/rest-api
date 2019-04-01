@@ -17,7 +17,7 @@ export class OrderService {
   }
   addOrder(orders: Order) {
     console.log(orders);
-    this.http.post<{message: string}>('http://localhost:3000/orders', orders)
+    this.http.post<{message: string}>('https://psat.herokuapp.com/orders', orders)
       .subscribe((resposeData) => {
         console.log(resposeData.message);
         this.order.push(orders);
@@ -26,7 +26,7 @@ export class OrderService {
     }
 
     getOrders() {
-      this.http.get<{message: string , orders: Order[]}>('http://localhost:3000/orders')
+      this.http.get<{message: string , orders: Order[]}>('https://psat.herokuapp.com/orders')
       .subscribe((OrderData) => {
         this.order = OrderData.orders;
         this.orderUpdated.next([...this.order]);

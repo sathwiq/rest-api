@@ -11,7 +11,7 @@ export class SponsorService {
 
   addPost(title: string) {
     const sponsor: Sponsors = {title: title};
-    this.http.post<{message:string}>('http://localhost:3000/posts',sponsor)
+    this.http.post<{message:string}>('https://psat.herokuapp.com/posts',sponsor)
       .subscribe((resposeData)=>{
         console.log(resposeData.message);
         this.sponsors.push(sponsor);
@@ -20,7 +20,7 @@ export class SponsorService {
 
   }
   getPost(){
-    this.http.get<{message:string ,posts:any}>('http://localhost:3000/posts')
+    this.http.get<{message:string ,posts:any}>('https://psat.herokuapp.com/posts')
     .subscribe((postData)=>{
       this.sponsors=postData.posts;
       this.postsUpdated.next([...this.sponsors])

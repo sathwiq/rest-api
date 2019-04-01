@@ -28,7 +28,7 @@ export class RestaurantService {
     this.http.get < {
         message: string,
         items: Restaurant['items'][]
-      } > ('http://localhost:3000/items/'+s)
+      } > ('https://psat.herokuapp.com/items/'+s)
       .subscribe((restaurantData) => {
         this.item = restaurantData.items;
         this.itemUpdated.next([...this.item]);
@@ -39,7 +39,7 @@ export class RestaurantService {
     return this.itemUpdated.asObservable();
   }
   getCname(){
-    this.http.get<{message:string ,posts:any}>('http://localhost:3000/cname')
+    this.http.get<{message:string ,posts:any}>('https://psat.herokuapp.com/cname')
     .subscribe((cnameData)=>{
       this.cname=cnameData.posts;
       console.log(cnameData.posts);
