@@ -30,6 +30,7 @@ export class AuthService {
       .subscribe(response => {
         console.log(response);
       });
+    
   }
 
   login(email: string, password: string) {
@@ -44,7 +45,7 @@ export class AuthService {
           // this.tokenTimer = setTimeout(() => {this.logout(); }, expiresInDuration * 1000);
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
-          this.router.navigate(['/']);
+          
         }
       });
   }

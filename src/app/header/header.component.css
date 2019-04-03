@@ -41,3 +41,22 @@ ul {
 .spacer {
   flex: 1 1 auto;
 }
+  @media (max-width: 576px) { 
+    .toolColor{
+
+      padding-left: 00px;
+      padding-right:00px;
+    
+      color: aliceblue
+    }
+    span{
+
+      padding: 6px;
+    }
+    .active{
+      background-color:#8a83eb;
+      padding: 10px
+    }
+
+
+  }

@@ -1,11 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
-import { Subscription } from 'rxjs';
-import { Restaurant } from 'src/app/shared/restaurant.model';
-import { RestaurantService } from '../restaurant.service';
-import { CartService } from 'src/app/cart/cart.service';
-import { Cart } from 'src/app/shared/cart.model';
-import { ActivatedRoute } from '@angular/router';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  MatSnackBar
+} from '@angular/material';
+import {
+  Subscription
+} from 'rxjs';
+import {
+  Restaurant
+} from 'src/app/shared/restaurant.model';
+import {
+  RestaurantService
+} from '../restaurant.service';
+import {
+  CartService
+} from 'src/app/cart/cart.service';
+import {
+  Cart
+} from 'src/app/shared/cart.model';
+import {
+  ActivatedRoute
+} from '@angular/router';
 
 @Component({
   selector: 'app-items',
@@ -13,8 +30,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
-  constructor(public  snackBar: MatSnackBar,
-    private route: ActivatedRoute,
+  constructor(public snackBar: MatSnackBar,
+              private route: ActivatedRoute,
               public itemService: RestaurantService,
               public cartService: CartService) {}
   item: Restaurant['items'][] = [];
@@ -23,33 +40,40 @@ export class ItemsComponent implements OnInit {
   private itemsSub: Subscription;
   loadedItem;
 
-// tslint:disable-next-line: member-ordering
+  // tslint:disable-next-line: member-ordering
   displayedColumns: string[] = ['position', 'name', 'price', 's'];
 
   cart: Cart;
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.loadedItem= params.a;
+      this.loadedItem = params.a;
       this.itemService.getItems(this.loadedItem);
       this.itemsSub = this.itemService.getItemUpdateListener()
-      .subscribe((items: Restaurant['items'][] ) => {
-        this.item = items;
-        this.dataSource = this.item;
-        this.loaded = true;
-        
-  });
-
+        .subscribe((items: Restaurant['items'][]) => {
+          this.item = items;
+          this.dataSource = this.item;
+          console.log(items);
+          this.loaded = true;
+        });
     });
+
+
+
   }
 
-  openSnackBar(message: string, action: string , i: number) {
-    this.cart = {title: this.dataSource[i].name, price: this.dataSource[i].price,no : 0};
+  openSnackBar(message: string, action: string, i: number) {
+    this.cart = {
+      title: this.dataSource[i].name,
+      price: this.dataSource[i].price,
+      no: 0
+    };
     this.cartService.addTOCart(this.cart);
     this.snackBar.open(message, action, {
       duration: 2000,
     });
   }
+// tslint:disable-next-line: use-life-cycle-interface
   ngOnDestroy() {
     this.itemsSub.unsubscribe();
   }

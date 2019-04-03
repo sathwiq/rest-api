@@ -25,6 +25,7 @@ export class RestaurantService {
   private cnamesUpdated = new Subject<Sponsors[]>();
   constructor(private http: HttpClient) {}
   getItems(s:string) {
+    this.item.pop();
     this.http.get < {
         message: string,
         items: Restaurant['items'][]
@@ -32,7 +33,6 @@ export class RestaurantService {
       .subscribe((restaurantData) => {
         this.item = restaurantData.items;
         this.itemUpdated.next([...this.item]);
-        console.log(this.item);
       });
   }
   getItemUpdateListener() {
@@ -42,7 +42,6 @@ export class RestaurantService {
     this.http.get<{message:string ,posts:any}>('https://psat.herokuapp.com/cname')
     .subscribe((cnameData)=>{
       this.cname=cnameData.posts;
-      console.log(cnameData.posts);
       this.cnamesUpdated.next([...this.cname]);
     });
   }

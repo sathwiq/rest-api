@@ -1,11 +1,10 @@
 <mat-toolbar  color="primary"  class="toolColor">
-    <span ><a [routerLink]="['/']" >Mojo</a></span>
     <span routerLinkActive="active"><a [routerLink]="['/home']" >Home<mat-icon>home</mat-icon></a></span>
     <span routerLinkActive="active"><a [routerLink]="['/cart']" >cart<mat-icon>shopping_cart</mat-icon></a></span>
     <span routerLinkActive="active"><a [routerLink]="['/order']" >order</a></span>
     
   <!-- This fills the remaining space of the current row -->
-  <span class="example-fill-remaining-space"></span>
+  
   <span>
     <a mat-button routerLink="/login/a" routerLinkActive="active">Login</a>
   </span>
@@ -16,3 +15,4 @@
     <button mat-button (click)="onLogout()">Logout</button>
   </span>
 </mat-toolbar>
+
