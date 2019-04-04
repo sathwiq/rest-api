@@ -18,7 +18,7 @@ router.post("/signup", (req, res, next) => {
         });
       })
       .catch(err => {
-        res.status(500).json({
+        res.status(5001).json({
           error: err
         });
       });
@@ -30,16 +30,18 @@ router.post("/login", (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then(user => {
       if (!user) {
-        return res.status(102).json({
-          message: "Auth failed"
-        });
+        throw new Error( res.status(401).json({
+          message: "Auth failed error name"
+        }));
       }
       fetchedUser = user;
       return bcrypt.compare(req.body.password, user.password);
     })
     .then(result => {
       if (!result) {
-        throw new Error('auth failed');
+        throw new Error(res.status(402).json({
+          message: "Auth failed error password"
+        }));
       }
       const token = jwt.sign(
         { email: fetchedUser.email, userId: fetchedUser._id },
