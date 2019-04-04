@@ -29,3 +29,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## TO run node server
 
 npm run start:server
+
+## active s3 hosted link
+
+http://psatwiq.s3-website.us-east-2.amazonaws.com/home
