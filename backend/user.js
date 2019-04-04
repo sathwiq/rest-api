@@ -30,7 +30,7 @@ router.post("/login", (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then(user => {
       if (!user) {
-        return res.status(401).json({
+        return res.status(4022).json({
           message: "Auth failed"
         });
       }
