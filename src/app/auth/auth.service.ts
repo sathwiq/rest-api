@@ -61,19 +61,22 @@ export class AuthService {
     };
     this.http.post < {
         token: string,
-        epiresIn: number
+        epiresIn: number,
+        error:string
       } > ('https://psat.herokuapp.com/user/login', authData)
       .subscribe(response => {
         const token = response.token;
         this.token = token;
-        console.log(token);
+        console.log(response.error);
         if (token) {
           // const expiresInDuration = response.epiresIn;
           // this.tokenTimer = setTimeout(() => {this.logout(); }, expiresInDuration * 1000);
           this.isAuthenticated = true;
           this.router.navigate(['/']);
           this.authStatusListener.next(true);
-
+        }
+        else{
+          this.router.navigate(['/login/w']);
         }
       });
   }

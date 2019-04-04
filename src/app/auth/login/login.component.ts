@@ -27,6 +27,6 @@ export class LoginComponent  implements OnInit  {
     }
     this.isLoading = true;
     this.authService.login(form.value.email, form.value.password);
-
+    
   }
 }

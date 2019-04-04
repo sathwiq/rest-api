@@ -1,6 +1,8 @@
 <p *ngIf="co=='n'">Login To Access order and cart</p>
+
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
+  
   <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
     <mat-form-field>
       <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
@@ -12,4 +14,5 @@
     </mat-form-field>
     <button mat-raised-button color="accent" type="submit">Login</button>
   </form>
+  <p *ngIf="co=='w'">invalid credentials</p>
 </mat-card>

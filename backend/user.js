@@ -39,7 +39,7 @@ router.post("/login", (req, res, next) => {
     })
     .then(result => {
       if (!result) {
-        return res.status(401).json({
+        return res.status(402).json({
           message: "Auth failed"
         });
       }
@@ -50,7 +50,8 @@ router.post("/login", (req, res, next) => {
       );
       res.status(200).json({
         token: token,
-        expiresIn: 3600
+        expiresIn: 3600,
+        message: "Auth success"
       });
     })
     .catch(err => {
