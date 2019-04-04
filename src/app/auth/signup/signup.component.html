@@ -1,8 +1,6 @@
 <mat-card>
   <mat-spinner *ngIf="isLoading" ></mat-spinner>
-  <span *ngIf="isLoading">
-    <a mat-raised-button color="accent" routerLink="/login/a" >Login</a>
-  </span>
+  
   <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
     <mat-form-field>
       <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
