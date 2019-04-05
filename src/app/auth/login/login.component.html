@@ -1,18 +1,23 @@
 <p *ngIf="co=='n'">Login To Access order and cart</p>
 
 <mat-card>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <mat-spinner *ngIf="isLoading && !co=='w'"></mat-spinner>
   
-  <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
+  <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading || co=='efailure' || co=='false'">
     <mat-form-field>
       <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
       <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
     </mat-form-field>
+    <mat-error class="e"  *ngIf="co=='efailure'">Please enter a valid email.</mat-error>
     <mat-form-field>
-      <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
-      <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
+      <input [type]="hide ? 'password' : 'text'" name="password" ngModel  matInput placeholder="Password" #passwordInput="ngModel" required>
+       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> 
+      </button>
+      <mat-error class="e" *ngIf="passwordInput.invalid ">Please enter a valid password.</mat-error>
+      
     </mat-form-field>
+    <mat-error *ngIf="co=='false'">Please enter a real password.</mat-error>
     <button mat-raised-button color="accent" type="submit">Login</button>
   </form>
-  <p *ngIf="co=='w'">invalid credentials</p>
 </mat-card>

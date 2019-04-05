@@ -26,7 +26,7 @@ export class OrderService {
     }
 
     getOrders() {
-      this.http.get<{message: string , orders: Order[]}>('https://psat.herokuapp.com/orders')
+      this.http.get<{message: string , orders: Order[]}>('/orders')
       .subscribe((OrderData) => {
         this.order = OrderData.orders;
         this.orderUpdated.next([...this.order]);

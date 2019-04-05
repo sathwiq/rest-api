@@ -29,7 +29,7 @@ export class RestaurantService {
     this.http.get < {
         message: string,
         items: Restaurant['items'][]
-      } > ('https://psat.herokuapp.com/items/'+s)
+      } > ('http://localhost:3000/items/'+s)
       .subscribe((restaurantData) => {
         this.item = restaurantData.items;
         this.itemUpdated.next([...this.item]);

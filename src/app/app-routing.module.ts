@@ -16,7 +16,8 @@ const routes: Routes = [
    {path: 'order', component: OrderComponent,canActivate:[AuthGuard]},
    {path: 'cart', component: CartComponent ,canActivate:[AuthGuard]},
    { path: 'login/:i', component: LoginComponent },
-   { path: 'signup', component: SignupComponent },
+   { path: 'signup/:id', component: SignupComponent },
+   { path: '**', redirectTo: '/home' }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

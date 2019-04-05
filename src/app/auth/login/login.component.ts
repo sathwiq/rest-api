@@ -1,4 +1,4 @@
-import { Component,OnInit  } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,10 +10,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginComponent  implements OnInit  {
   isLoading = false;
-  co;
+  co;  hide = true;
   constructor(public authService: AuthService,
-    private route: ActivatedRoute,
-     private router: Router
+              private route: ActivatedRoute,
+              private router: Router
     ) {}
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -27,6 +27,7 @@ export class LoginComponent  implements OnInit  {
     }
     this.isLoading = true;
     this.authService.login(form.value.email, form.value.password);
-    
+
   }
 }
+

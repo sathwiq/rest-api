@@ -24,7 +24,7 @@ export class AuthService {
   private isAuthenticated = false;
   private token: string;
   private authStatusListener = new Subject < boolean > ();
-
+  private message: string;
   getToken() {
     return this.token;
   }
@@ -47,27 +47,30 @@ export class AuthService {
       } > ('https://psat.herokuapp.com/user/signup', authData)
       .subscribe(response => {
         console.log(response.message);
-        if (response.message == 'User created!') {
+        if (response.message === 'User created!') {
           this.login(email, password);
         }
+        else{
+          this.router.navigate(['/signup/w']);
+        }
       });
-
   }
-
   login(email: string, password: string) {
     const authData: AuthData = {
       email,
       password
     };
+    
     this.http.post < {
         token: string,
         epiresIn: number,
-        error:string
+        message: string
       } > ('https://psat.herokuapp.com/user/login', authData)
       .subscribe(response => {
+        console.log(response.message);
+        this.message=response.message;
         const token = response.token;
         this.token = token;
-        console.log(response.error);
         if (token) {
           // const expiresInDuration = response.epiresIn;
           // this.tokenTimer = setTimeout(() => {this.logout(); }, expiresInDuration * 1000);
@@ -75,11 +78,12 @@ export class AuthService {
           this.router.navigate(['/']);
           this.authStatusListener.next(true);
         }
-        else{
-          this.router.navigate(['/login/w']);
-        }
       });
-  }
+    
+    if(!this.isAuthenticated) {
+            this.router.navigate(['/login/'+this.message]);
+          }
+}
   logout() {
     this.token = null;
     this.isAuthenticated = false;

@@ -33,3 +33,7 @@ npm run start:server
 ## active s3 hosted link
 
 http://psatwiq.s3-website.us-east-2.amazonaws.com/home
+
+git push heroku master
+
+https://psat.herokuapp.com/
