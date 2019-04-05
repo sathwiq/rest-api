@@ -29,7 +29,7 @@ export class RestaurantService {
     this.http.get < {
         message: string,
         items: Restaurant['items'][]
-      } > ('http://localhost:3000/items/'+s)
+      } > ('https://psat.herokuapp.com/items/'+s)
       .subscribe((restaurantData) => {
         this.item = restaurantData.items;
         this.itemUpdated.next([...this.item]);
@@ -48,6 +48,4 @@ export class RestaurantService {
   getCnameUpdateListener() {
     return this.cnamesUpdated.asObservable();
   }
-
-
 }

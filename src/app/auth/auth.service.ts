@@ -77,12 +77,14 @@ export class AuthService {
           this.isAuthenticated = true;
           this.router.navigate(['/']);
           this.authStatusListener.next(true);
+        }else{
+          this.router.navigate(['/login/'+this.message]);
         }
       });
     
-    if(!this.isAuthenticated) {
-            this.router.navigate(['/login/'+this.message]);
-          }
+    // if(!this.isAuthenticated) {
+            
+    //       }
 }
   logout() {
     this.token = null;
